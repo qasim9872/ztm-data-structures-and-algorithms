@@ -1,0 +1,17 @@
+tsconfig.json
+Readme.md
+nodemon.json
+jest.config.js
+.prettierrc
+.gitignore
+.eslintrc.js
+.eslintignore
+.editorconfig
+.npmignore
+.vscode/
+coverage/
+src/
+docs/
+
+// npm pack
+{YOUR_LIB}-*.tgz

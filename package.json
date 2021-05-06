@@ -1,0 +1,99 @@
+{
+    "name": "aws-transcribe",
+    "version": "1.1.0",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "scripts": {
+        "build": "tsc",
+        "build:clean": "npm run clean:dist && tsc",
+        "build:watch": "tsc --watch",
+        "dev": "nodemon",
+        "debug": "DEBUG=aws-transcribe:* nodemon",
+        "example-stream-from-microphone": "ts-node ./src/examples/stream-from-microphone.ts",
+        "test": "jest",
+        "test:watch": "jest --watchAll",
+        "staged-test": "npm run test -- --bail --findRelatedTests",
+        "versioning": "standard-version",
+        "post-versioning": "git push --follow-tags origin master",
+        "release": "npm run build:clean && np",
+        "clean:dist": "shx rm -rf dist/",
+        "clean": "npm run clean:dist && shx rm -rf node_modules/  coverage/",
+        "pretty-base": "prettier \"**/*.{ts, js, json}\"",
+        "format": "npm run pretty-base --write",
+        "lint": "eslint --fix \"src/**/*.{ts,tsx}\"",
+        "typedoc": "typedoc --out ./docs --mode modules --tsconfig ./tsconfig.json ./src"
+    },
+    "author": "Muhammad Qasim <qasim9872@gmail.com>",
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/qasim9872/aws-transcribe"
+    },
+    "keywords": [
+        "amazon",
+        "aws",
+        "transcribe",
+        "speech",
+        "transcription",
+        "websocket"
+    ],
+    "bugs": {
+        "url": "https://github.com/qasim9872/aws-transcribe/issues"
+    },
+    "homepage": "https://github.com/qasim9872/aws-transcribe#readme",
+    "devDependencies": {
+        "@types/debug": "^4.1.5",
+        "@types/jest": "^25.2.3",
+        "@types/node": "^13.13.9",
+        "@types/ws": "^7.2.4",
+        "@typescript-eslint/eslint-plugin": "^2.34.0",
+        "@typescript-eslint/parser": "^2.34.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.11.0",
+        "eslint-plugin-prettier": "^3.1.3",
+        "husky": "^4.2.5",
+        "jest": "^25.5.4",
+        "jest-websocket-mock": "^2.0.2",
+        "lint-staged": "^10.2.7",
+        "mock-socket": "^9.0.3",
+        "node-record-lpcm16": "^1.0.1",
+        "nodemon": "^2.0.4",
+        "np": "^6.2.3",
+        "prettier": "^2.0.5",
+        "shx": "^0.3.2",
+        "standard-version": "^8.0.0",
+        "ts-jest": "^26.1.0",
+        "ts-node": "^8.10.2",
+        "typedoc": "^0.17.7",
+        "typescript": "^3.9.3"
+    },
+    "dependencies": {
+        "@aws-sdk/eventstream-marshaller": "0.1.0-preview.2",
+        "@aws-sdk/util-utf8-node": "0.1.0-preview.1",
+        "crypto": "^1.0.1",
+        "debug": "^4.1.1",
+        "query-string": "^6.12.1",
+        "ws": "^7.3.0"
+    },
+    "lint-staged": {
+        "*.ts": [
+            "npm run format",
+            "npm run lint",
+            "npm run staged-test",
+            "git add"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "npm test"
+        }
+    },
+    "standard-version": {
+        "skip": {
+            "changelog": true
+        }
+    },
+    "np": {
+        "yarn": false
+    }
+}
