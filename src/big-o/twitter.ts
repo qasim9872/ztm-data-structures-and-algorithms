@@ -14,21 +14,14 @@ function createTweet(tweet: string, date: number): Tweet {
 
 const tweets: Tweets = [createTweet("tweet 1", 2012), createTweet("tweet 2", 2014), createTweet("tweet 3", 2016)]
 
-function findOldestTweet(tweets: Tweets) {
-    let oldest: Tweet | null = null
-
-    tweets.forEach(tweet => {
-        if (!oldest) {
-            oldest = tweet
-            return
-        }
-
-        if (tweet.date > oldest.date) {
-            oldest = tweet
-        }
+function compareAllTweets(tweets: Tweets) {
+    tweets.forEach(outerTweet => {
+        tweets.forEach(innerTweet => {
+            // compare?
+            if (outerTweet.date === innerTweet.date) {
+            }
+        })
     })
-
-    return oldest
 }
 
-console.log(findOldestTweet(tweets))
+compareAllTweets(tweets)
