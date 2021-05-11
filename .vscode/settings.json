@@ -6,5 +6,6 @@
     // "eslint.workingDirectories": [
     //     "server"
     // ],
-    "jest.rootPath": "./server"
+    "jest.rootPath": "./server",
+    // "editor.formatOnSave": false
 }
