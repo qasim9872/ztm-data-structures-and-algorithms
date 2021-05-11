@@ -4,6 +4,7 @@ const EXPECTED_OUTPUT = "!olleh"
 function reverse(str: string): string {
     const array = str.split("")
 
+    // O(n) ~ where n is str.length
     for (let index = 0, reverseIndex = array.length - 1; index < array.length; index++, reverseIndex--) {
         console.log({ index, reverseIndex, array })
         if (reverseIndex === index || index + 1 === reverseIndex) {
