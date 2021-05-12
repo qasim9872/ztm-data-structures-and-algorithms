@@ -1,7 +1,7 @@
 // 1 + 1 + 1 + 1 + n + n + n + n + n + n + n
 // 4 + 7n
 // O(4 + 7n) => O(n)
-function anotherFunChallenge(input) {
+function anotherFunChallenge(input: number) {
     const a = 5 // O(1)
     const b = 10 // O(1)
     const c = 50 // O(1)
