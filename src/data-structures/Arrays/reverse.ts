@@ -25,3 +25,5 @@ console.log(`Your output is: ${output}`)
 if (output !== EXPECTED_OUTPUT) {
     throw new Error(`Invalid output, expected output to be: ${EXPECTED_OUTPUT}`)
 }
+
+export {} // this ensures the file is treated as a module
