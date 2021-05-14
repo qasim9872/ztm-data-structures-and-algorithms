@@ -9,9 +9,9 @@ const ZERO = 0
 function moveZeroes(array: number[]): void {
     let lastNonZeroFoundAt = 0
 
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] !== ZERO) {
-            array[lastNonZeroFoundAt++] = array[i]
+    for (const value of array) {
+        if (value !== ZERO) {
+            array[lastNonZeroFoundAt++] = value
         }
     }
 
