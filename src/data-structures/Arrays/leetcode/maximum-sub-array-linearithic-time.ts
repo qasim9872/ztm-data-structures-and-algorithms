@@ -1,10 +1,12 @@
-const INPUT_1 = [-2, -5, 6, -2]
-const EXPECTED_OUTPUT = 6
+const INPUT_1 = [-2, -5, 6, -2, -3, 1, 5, -6]
+const EXPECTED_OUTPUT = 7
 
 function findCrossingSubArray(nums: number[], low: number, mid: number, high: number) {
     // find left
     let leftSum = Number.NEGATIVE_INFINITY
     let leftTempSum = 0
+
+    // NOTE: TODO: The below only works if you do a reverse loop
     for (let i = low; i <= mid; i++) {
         leftTempSum += nums[i]
         leftSum = Math.max(leftTempSum, leftSum)
