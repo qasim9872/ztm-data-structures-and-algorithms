@@ -5,6 +5,7 @@ Mind map: <https://coggle.it/diagram/W5E5tqYlrXvFJPsq/t/master-the-interview-cli
 ## Structures
 
 - Arrays
+- Hash Tables
 
 ## Operations
 
