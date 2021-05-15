@@ -1,5 +1,5 @@
 export default class MyHashTable<Value> {
-    data: Value[]
+    data: Array<Array<Array<string | Value>>>
 
     constructor(size: number) {
         this.data = new Array(size)
@@ -15,12 +15,24 @@ export default class MyHashTable<Value> {
 
     public set(key: string, value: Value) {
         const hash = this._hash(key)
-        this.data[hash] = value
+        if (!this.data[hash]) {
+            this.data[hash] = []
+        }
+        this.data[hash].push([key, value])
     }
 
     public get(key: string) {
         const hash = this._hash(key)
-        return this.data[hash]
+        const entries = this.data[hash]
+
+        if (!entries) return
+
+        if (entries.length === 1) {
+            return entries[0][1]
+        } else {
+            const entry = entries.find((entryToCheck) => entryToCheck[0] === key) // O(n)
+            return entry && entry[1]
+        }
     }
 }
 
@@ -32,6 +44,11 @@ function validate<Value>(myHashTable: MyHashTable<Value>, key: string, value: Va
     if (result !== value) throw new Error(`Invalid output: ${result}`)
 }
 
-const myHashTable = new MyHashTable<number>(50)
+const myHashTable = new MyHashTable<number>(2)
+myHashTable.set("hello", 1)
+myHashTable.set("world", 2)
+
 validate(myHashTable, "grapes", 10000)
 validate(myHashTable, "apples", 9)
+
+myHashTable.get("magic")
