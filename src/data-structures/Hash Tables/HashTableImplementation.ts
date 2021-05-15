@@ -34,6 +34,21 @@ export default class MyHashTable<Value> {
             return entry && entry[1]
         }
     }
+
+    public keys() {
+        const foundKeys: string[] = []
+        for (const bucket of this.data) {
+            if (!bucket) {
+                continue
+            }
+
+            for (const entries of bucket) {
+                foundKeys.push(entries[0] as string)
+            }
+        }
+
+        return foundKeys
+    }
 }
 
 function validate<Value>(myHashTable: MyHashTable<Value>, key: string, value: Value) {
@@ -47,6 +62,8 @@ function validate<Value>(myHashTable: MyHashTable<Value>, key: string, value: Va
 const myHashTable = new MyHashTable<number>(2)
 myHashTable.set("hello", 1)
 myHashTable.set("world", 2)
+
+console.log("keys: ", myHashTable.keys())
 
 validate(myHashTable, "grapes", 10000)
 validate(myHashTable, "apples", 9)
